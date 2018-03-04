@@ -18,6 +18,9 @@ a, a:link, a:visited, a:hover, a:active {
 .mt_150{
     margin-top:150px;
 }
+.mt_20{
+    margin-bottom:20px;
+}
 .lt_aside {
     width: 180px;
     height: 100%;

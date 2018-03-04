@@ -32,7 +32,7 @@
                     分类管理
                 </a>
                 <div class="second" style="display: block">
-                    <a href="first.html"  class="now">一级分类</a>
+                    <a href="first.html" class="now">一级分类</a>
                     <a href="second.html">二级分类</a>
                 </div>
             </li>
@@ -62,12 +62,30 @@
         </ol>
         <!--内容-->
         <div class="lt_content">
+            <button class="btn btn-default mt_20 btn_add">添加分类</button>
+            <table class="table table-bordered table-hover">
+                <thead>
+                <tr>
+                    <th width="30%">序号</th>
+                    <th width="70%">分类名称</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td>1</td>
+                    <td>户外馆</td>
+                </tr>
+                </tbody>
+            </table>
+
+            <!--分页标签 只需要一个ul 指定id-->
+            <div class="text-right"><ul id="paginator"></ul></div>
 
         </div>
     </div>
 </div>
 
-<!--模态框-->
+<!--退出登陆模态框-->
 <div class="modal fade" tabindex="-1" id="logoutModal">
     <div class="modal-dialog modal-sm">
         <div class="modal-content">
@@ -86,10 +104,50 @@
     </div><!-- /.modal-dialog -->
 </div><!-- /.modal -->
 
+<!--禁用启用模态框模态框-->
+<div class="modal fade" tabindex="-1" id="firstModal">
+    <div class="modal-dialog modal-sm">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title">添加分类</h4>
+            </div>
+            <form id="form">
+            <div class="modal-body">
+                <!--表单-->
+
+                    <div class="form-group">
+                        <input type="text" class="form-control" placeholder="请输入一级分类的名称" name="categoryName">
+                    </div>
+
+            </div>
+
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                <button type="submit" class="btn btn-primary">添加</button>
+            </div>
+            </form>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+
+
+<script type="text/html" id="tmp">
+    {{ each rows v i }}
+    <tr>
+        <td>{{(page-1)*size+i+1}}</td>
+        <td>{{ v.categoryName }}</td>
+    </tr>
+    {{ /each }}
+</script>
+
 <script src="lib/jquery/jquery.min.js"></script>
 <script src="lib/bootstrap/js/bootstrap.min.js"></script>
 <script src="lib/bootstrap-validator/js/bootstrapValidator.min.js"></script>
 <script src="lib/nprogress/nprogress.js"></script>
+<script src="lib/artTemplate/template-web.js"></script>
+<script src="lib/bootstrap-paginator/bootstrap-paginator.min.js"></script>
 <script src="js/common.js"></script>
+<script src="js/first.js"></script>
 </body>
 </html>
