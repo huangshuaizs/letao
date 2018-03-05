@@ -45,7 +45,7 @@ $(function () {
         //显示模态框
         $('#userModal').modal('show');
         //获取点击的用户的id和isDelete
-        var id = $(this).parent().data(id);
+        var id = $(this).parent().data('id');
         var isDelete = $(this).hasClass('btn-success')?1:0;
         // console.log(isDelete);
         //发送ajax请求

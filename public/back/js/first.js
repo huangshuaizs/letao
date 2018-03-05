@@ -1,8 +1,9 @@
 $(function () {
     //渲染列表信息 分页
+    var page = 1;
+    var pageSize = 5;
     function render() {
-        var page = 1;
-        var pageSize = 5;
+
         $.ajax({
             type:'get',
             url:'/category/queryTopCategoryPaging',

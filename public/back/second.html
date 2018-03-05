@@ -33,7 +33,7 @@
                 </a>
                 <div class="second" style="display: block">
                     <a href="first.html">一级分类</a>
-                    <a href="second.html"  class="now">二级分类</a>
+                    <a href="second.html" class="now">二级分类</a>
                 </div>
             </li>
             <li>
@@ -62,12 +62,34 @@
         </ol>
         <!--内容-->
         <div class="lt_content">
+            <button class="btn btn-default mt_20 btn_add">添加分类</button>
+            <table class="table table-bordered table-hover">
+                <thead>
+                <tr>
+                    <th width="10%">序号</th>
+                    <th width="30%">一级分类名称</th>
+                    <th width="30%">二级分类名称</th>
+                    <th width="30%">二级分类LOGO</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td>1</td>
+                    <td>女士管</td>
+                    <td>维萨德</td>
+                    <td></td>
+                </tr>
+                </tbody>
+            </table>
+
+            <!--分页标签 只需要一个ul 指定id-->
+            <div class="text-right"><ul id="paginator"></ul></div>
 
         </div>
     </div>
 </div>
 
-<!--模态框-->
+<!--退出登陆模态框-->
 <div class="modal fade" tabindex="-1" id="logoutModal">
     <div class="modal-dialog modal-sm">
         <div class="modal-content">
@@ -86,10 +108,81 @@
     </div><!-- /.modal-dialog -->
 </div><!-- /.modal -->
 
+<!--二级分类模态框-->
+<div class="modal fade" tabindex="-1" id="secondModal">
+    <div class="modal-dialog modal-sm">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"><span>&times;</span></button>
+                <h4 class="modal-title">添加分类</h4>
+            </div>
+            <form id="form">
+                <div class="modal-body">
+                    <div class="form-group">
+                        <div class="dropdown">
+                            <button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown">
+                                <span class="dropdown_text">请选择一级分类</span>
+                                <span class="caret"></span>
+                            </button>
+                            <ul class="dropdown-menu">
+
+                            </ul>
+                            <input type="hidden" name="categoryId">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <input type="text" autocomplete="off" class="form-control" placeholder="请输入二级分类的名称" name="brandName">
+                    </div>
+                    <div class="form-group">
+                        <div class="file_box">
+                            <label for="fileupload" class="btn btn-default">上传图片</label>
+                            <input type="file" style="display: none" id="fileupload" class="btn btn-default" name="pic1" data-url="/category/addSecondCategoryPic">
+                        </div>
+                    </div>
+                    <div class="form-group img_box">
+                        <img src="images/none.png" width="100" height="100" alt="">
+                        <input type="hidden" name="brandLogo">
+                        <input type="hidden" name="hot" value="1">
+                    </div>
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                    <button type="submit" class="btn btn-primary">添加</button>
+                </div>
+            </form>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+
+<!--列表动态渲染-->
+<script type="text/html" id="tmp">
+    {{each rows v i}}
+    <tr>
+        <td>{{(page-1)*size+i+1}}</td>
+        <td>{{v.categoryName}}</td>
+        <td>{{v.brandName}}</td>
+        <td><img src="{{v.brandLogo?v.brandLogo:'images/none.png'}}" width="50" height="50" alt=""></td>
+    </tr>
+    {{/each}}
+</script>
+
+<script type="text/html" id="tmp2">
+    {{each rows v i}}
+    <li data-id="{{v.id}}"><a href="javascript:;">{{v.categoryName}}</a></li>
+    {{/each}}
+</script>
+
 <script src="lib/jquery/jquery.min.js"></script>
+<script src="lib/jquery-fileupload/jquery.ui.widget.js"></script>
+<script src="lib/jquery-fileupload/jquery.fileupload.js"></script>
 <script src="lib/bootstrap/js/bootstrap.min.js"></script>
 <script src="lib/bootstrap-validator/js/bootstrapValidator.min.js"></script>
+<script src="lib/bootstrap-paginator/bootstrap-paginator.min.js"></script>
 <script src="lib/nprogress/nprogress.js"></script>
+<!--1. 引入js文件-->
+<script src="lib/artTemplate/template-web.js"></script>
 <script src="js/common.js"></script>
+<script src="js/second.js"></script>
 </body>
 </html>
