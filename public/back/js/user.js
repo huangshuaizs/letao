@@ -2,7 +2,7 @@ $(function () {
     //1.发送ajax请求 渲染数据
 
     var page = 1;
-    var pageSize = 20;
+    var pageSize = 5;
     function render() {
         $.ajax({
             type:'get',
